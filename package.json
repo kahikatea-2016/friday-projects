@@ -1,0 +1,22 @@
+{
+  "name": "friday-projects",
+  "version": "1.0.0",
+  "description": "An app to manage the awesomeness that is Friday Projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "tape 'tests/**/*.js'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kahikatea-2016/friday-projects.git"
+  },
+  "author": "kahikatea-2016 <don@devacademy.co.nz>",
+  "license": "ISC",
+  "devDependencies": {
+    "tape": "^4.5.1"
+  },
+  "bugs": {
+    "url": "https://github.com/kahikatea-2016/friday-projects/issues"
+  },
+  "homepage": "https://github.com/kahikatea-2016/friday-projects#readme"
+}
