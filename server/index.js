@@ -15,5 +15,7 @@ app.get('/', (req, res) => {
 
 app.get('/v1/projects', routes.getProjects)
 app.get('/v1/projects/:id', routes.getProject)
+app.post('v1/projects', routes.addProject)
+app.put('v1/projects', routes.updateProject)
 
 app.listen(PORT, () => console.log('Listening to port', PORT))
