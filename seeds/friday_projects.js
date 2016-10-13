@@ -36,8 +36,8 @@ exports.seed = function (knex, Promise) {
         {id: 2, project_id: 1, team_member_id: 2},
         {id: 3, project_id: 1, team_member_id: 3},
         {id: 4, project_id: 2, team_member_id: 4},
-        {id: 4, project_id: 2, team_member_id: 5},
-        {id: 4, project_id: 2, team_member_id: 6}
+        {id: 5, project_id: 2, team_member_id: 5},
+        {id: 6, project_id: 2, team_member_id: 6}
       ])
     })
 }
