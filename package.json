@@ -4,7 +4,7 @@
   "description": "An app to manage the awesomeness that is Friday Projects",
   "main": "index.js",
   "scripts": {
-    "test": "xo && tape 'tests/**/*.js'"
+    "test": "xo && tape 'tests/**/*.js' | tap-spec"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,7 @@
   "author": "kahikatea-2016 <don@devacademy.co.nz>",
   "license": "ISC",
   "devDependencies": {
+    "tap-spec": "^4.1.1",
     "tape": "^4.5.1",
     "xo": "^0.17.0"
   },
