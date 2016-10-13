@@ -4,6 +4,7 @@
   "description": "An app to manage the awesomeness that is Friday Projects",
   "main": "index.js",
   "scripts": {
+    "start": "node 'server/index.js'",
     "knex": "knex",
     "test": "xo && tape 'tests/**/*.js' | tap-spec"
   },
@@ -36,6 +37,7 @@
   },
   "homepage": "https://github.com/kahikatea-2016/friday-projects#readme",
   "dependencies": {
+    "express": "^4.14.0",
     "knex": "^0.12.5",
     "sqlite3": "^3.1.6",
     "dotenv": "^2.0.0"
