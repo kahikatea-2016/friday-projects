@@ -16,6 +16,5 @@ test('that tests are working', function (t) {
 })
 
 test('express server is running', function (t) {
-
   t.end()
 })
