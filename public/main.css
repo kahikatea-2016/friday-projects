@@ -1,0 +1,11 @@
+body {
+  background-color: teal;
+  font-family: arial;
+  text-align: center;
+}
+
+li {
+  list-style: none;
+  margin-bottom: 20px;
+  font-size: 1.4em;
+}
