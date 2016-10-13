@@ -13,9 +13,9 @@
   "xo": {
     "rules": {
       "space-before-function-paren": ["error", {
-  			"anonymous": "always",
-  			"named": "always"
-  		}]
+        "anonymous": "always",
+        "named": "always"
+      }]
     },
     "semicolon": false,
     "space": 2
