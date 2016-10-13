@@ -6,14 +6,30 @@
   "scripts": {
     "start": "node 'server/index.js'",
     "knex": "knex",
-    "test": "xo && tape 'tests/**/*.js' | tap-spec"
+    "test": "xo && tape 'tests/**/*.js' | tap-spec",
+    "build": "webpack"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kahikatea-2016/friday-projects.git"
   },
+  "babel": {
+    "presets": [
+      "es2015",
+      "react"
+    ]
+  },
   "xo": {
+    "extends": "xo-react",
     "rules": {
+      "react/jsx-space-before-closing": 0,
+      "unicorn/filename-case": 0,
+      "import/no-unresolved": [
+        0,
+        {
+          "commonjs": true
+        }
+      ],
       "space-before-function-paren": [
         "error",
         {
@@ -28,8 +44,18 @@
   "author": "kahikatea-2016 <don@devacademy.co.nz>",
   "license": "ISC",
   "devDependencies": {
+    "babel-core": "^6.17.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "eslint-config-xo-react": "^0.10.0",
+    "eslint-plugin-react": "^6.4.1",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
     "tap-spec": "^4.1.1",
     "tape": "^4.5.1",
+    "webpack": "^1.13.2",
+    "webpack-dev-server": "^1.16.2",
     "xo": "^0.17.0"
   },
   "bugs": {
