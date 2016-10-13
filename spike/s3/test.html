@@ -1,0 +1,30 @@
+<input type="file" id="file-chooser" />
+<button id="upload-button">Upload to S3</button>
+<div id="results"></div>
+
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.6.8.min.js"></script>
+
+<script type="text/javascript">
+  AWS.config.update({
+    accessKeyId: "KEY_ID",
+    secretAccessKey: "SECRET_KEY"
+  });
+
+  var bucket = new AWS.S3({params: {Bucket: 'friday-projects'}});
+  var fileChooser = document.getElementById('file-chooser');
+  var button = document.getElementById('upload-button');
+  var results = document.getElementById('results');
+
+  button.addEventListener('click', function() {
+    var file = fileChooser.files[0];
+    if (file) {
+      results.innerHTML = '';
+      var params = {Key: file.name, ContentType: file.type, Body: file};
+      bucket.upload(params, function (err, data) {
+        results.innerHTML = err ? 'ERROR!' : "https://s3-ap-southeast-2.amazonaws.com/friday-projects/" + file.name;
+      });
+    } else {
+      results.innerHTML = 'Nothing to upload.';
+    }
+  }, false);
+</script>
