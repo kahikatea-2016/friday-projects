@@ -4,6 +4,7 @@
   "description": "An app to manage the awesomeness that is Friday Projects",
   "main": "index.js",
   "scripts": {
+    "start": "node 'server/index.js'",
     "test": "xo && tape 'tests/**/*.js' | tap-spec"
   },
   "repository": {
@@ -12,10 +13,13 @@
   },
   "xo": {
     "rules": {
-      "space-before-function-paren": ["error", {
-        "anonymous": "always",
-        "named": "always"
-      }]
+      "space-before-function-paren": [
+        "error",
+        {
+          "anonymous": "always",
+          "named": "always"
+        }
+      ]
     },
     "semicolon": false,
     "space": 2
@@ -30,5 +34,8 @@
   "bugs": {
     "url": "https://github.com/kahikatea-2016/friday-projects/issues"
   },
-  "homepage": "https://github.com/kahikatea-2016/friday-projects#readme"
+  "homepage": "https://github.com/kahikatea-2016/friday-projects#readme",
+  "dependencies": {
+    "express": "^4.14.0"
+  }
 }
