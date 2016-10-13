@@ -2,7 +2,7 @@
 An app to manage the awesomeness that is Friday Projects
 
 # Data Model
-<img src ="~/friday-projects/docs/datamodel.jpg">
+<img src ="https://github.com/kahikatea-2016/friday-projects/blob/data-model/docs/datamodel.jpg">
 The Data Model For This Project Consists of the Following Tables:
 
 * Photos
