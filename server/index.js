@@ -13,6 +13,7 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../public', 'list.html'))
 })
 
-app.get('/vl/projects', routes.getProjects)
+app.get('/v1/projects', routes.getProjects)
+app.get('/v1/projects/:id', routes.getProject)
 
 app.listen(PORT, () => console.log('Listening to port', PORT))
