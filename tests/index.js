@@ -1,8 +1,8 @@
-const test  = require('tape')
+const test = require('tape')
 
 // import code to be tested
 
-test ('that tests are working', function (t) {
+test('that tests are working', function (t) {
   // arrange
   t.plan(1) // don't need this if you use end()
   var expected = 1
@@ -13,4 +13,9 @@ test ('that tests are working', function (t) {
   // assert
   t.equal(actual, expected)
   t.end() // don't need this if you use plan()
+})
+
+test('express server is running', function (t) {
+
+  t.end()
 })

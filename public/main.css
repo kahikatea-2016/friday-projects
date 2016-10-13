@@ -4,13 +4,18 @@ body {
   text-align: center;
 }
 
-li {
+ul, li {
   list-style: none;
   margin-bottom: 20px;
-  font-size: 1.4em;
+  font-size: 1em;
 }
 
 table.photos {
   margin-left: auto;
   margin-right: auto;
+}
+
+input, select {
+  font-size: 1.4em;
+  margin: 5px;
 }
