@@ -1,7 +1,7 @@
 import test from 'tape'
 import knex from 'knex'
 
-import db from '../server/db'
+import {getProjects} from '../server/db'
 
 const testConfig = {
   client: 'sqlite3',
@@ -14,7 +14,7 @@ test('getProjects', function (t) {
   createTestData()
 
   // act
-  db.getProjects(testDb, projects => {
+  getProjects(testDb, projects => {
     // assert
     t.equal(projects[0].id, 1)
     t.equal(projects[0].title, 'Project One')
@@ -25,6 +25,11 @@ test('getProjects', function (t) {
 })
 
 function createTestData () {
-  knex.migrate.latest(testConfig)
-  knex.seed.run(testConfig)
+  testDb.migrate.latest(testConfig)
+    .then(function () {
+      return knex.seed.run(testConfig)
+    })
+    .then(function () {
+      // migrations are finished
+    })
 }
