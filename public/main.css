@@ -6,4 +6,6 @@ body {
 
 li {
   list-style: none;
+  margin-bottom: 20px;
+  font-size: 1.4em;
 }
