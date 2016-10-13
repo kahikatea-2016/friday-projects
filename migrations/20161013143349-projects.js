@@ -12,7 +12,7 @@ exports.up = function (knex, Promise) {
       table.increments('id').primary()
       table.string('url')
       table.string('caption')
-      table.integer('projects_id').references('projects.id')
+      table.integer('project_id').references('projects.id')
     }),
     knex.schema.createTable('team_members', function (table) {
       table.increments('id').primary()
@@ -20,8 +20,8 @@ exports.up = function (knex, Promise) {
     }),
     knex.schema.createTable('project_teams', function (table) {
       table.increments('id').primary()
-      table.integer('team_members_id').references('team_members.id')
-      table.integer('projects_id').references('projects.id')
+      table.integer('team_member_id').references('team_members.id')
+      table.integer('project_id').references('projects.id')
     })
   ])
 }
