@@ -12,10 +12,13 @@
   },
   "xo": {
     "rules": {
-      "space-before-function-paren": ["error", {
-        "anonymous": "always",
-        "named": "always"
-      }]
+      "space-before-function-paren": [
+        "error",
+        {
+          "anonymous": "always",
+          "named": "always"
+        }
+      ]
     },
     "semicolon": false,
     "space": 2
@@ -30,5 +33,8 @@
   "bugs": {
     "url": "https://github.com/kahikatea-2016/friday-projects/issues"
   },
-  "homepage": "https://github.com/kahikatea-2016/friday-projects#readme"
+  "homepage": "https://github.com/kahikatea-2016/friday-projects#readme",
+  "dependencies": {
+    "dotenv": "^2.0.0"
+  }
 }
