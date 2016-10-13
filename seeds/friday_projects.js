@@ -1,3 +1,5 @@
+/* eslint camelcase: [2, {properties: "never"}] */
+
 exports.seed = function (knex, Promise) {
   return Promise.all([
     knex('projects').del(),
