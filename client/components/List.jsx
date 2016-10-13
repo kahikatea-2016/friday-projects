@@ -1,9 +1,6 @@
 import React from 'react'
 
 export default React.createClass({
-  // propTypes: {
-  //   projectname: React.PropTypes.string.isRequired
-  // }
 
   render () {
     return (
