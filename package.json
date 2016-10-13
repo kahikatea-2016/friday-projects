@@ -4,16 +4,27 @@
   "description": "An app to manage the awesomeness that is Friday Projects",
   "main": "index.js",
   "scripts": {
-    "test": "tape 'tests/**/*.js'"
+    "test": "xo && tape 'tests/**/*.js'"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kahikatea-2016/friday-projects.git"
   },
+  "xo": {
+    "rules": {
+      "space-before-function-paren": ["error", {
+        "anonymous": "always",
+        "named": "always"
+      }]
+    },
+    "semicolon": false,
+    "space": 2
+  },
   "author": "kahikatea-2016 <don@devacademy.co.nz>",
   "license": "ISC",
   "devDependencies": {
-    "tape": "^4.5.1"
+    "tape": "^4.5.1",
+    "xo": "^0.17.0"
   },
   "bugs": {
     "url": "https://github.com/kahikatea-2016/friday-projects/issues"
