@@ -9,3 +9,8 @@ li {
   margin-bottom: 20px;
   font-size: 1.4em;
 }
+
+input, select {
+  font-size: 1.4em;
+  margin: 5px;
+}
