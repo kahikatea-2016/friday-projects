@@ -12,5 +12,5 @@ test('test harness is working', function (t) {
 
   // assert
   t.equal(actual, expected)
-  t.end() // don't need this if you use plan()
+  t.end() 
 })
