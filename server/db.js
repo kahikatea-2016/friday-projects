@@ -7,7 +7,6 @@ const db = knex(config)
 export default {
   getProjects: getProjects.bind(null, db),
   getProjectsPromise: getProjectsPromise.bind(null, db)
-  // updateProject: updateProject
 }
 
 export function getProjects (db, cb) {
@@ -26,12 +25,3 @@ export function getProjectsPromise (db) {
       .catch(reject)
   })
 }
-
-// function updateProject (project) {
-//
-// }
-//
-// //Finds Project name
-// // Finds Project Tables
-// // Tables that Have Changes
-// // Add/inserts the values
