@@ -24,20 +24,20 @@ The Data Model For This Project Consists of the Following Tables:
 - Name
 
 
-Routes //
+# Routes //
 
-getProjects
-request expect - null
-response expect - json array
+* getProjects
+  - request expect - null
+  - response expect - json array
 
-getProject
-request expect - req.params.id
-response expect - json array
+* getProject
+  - request expect - req.params.id
+  - response expect - json array
 
-addProject
-request expect - req.body
-response expect - 204
+* addProject
+  - request expect - req.body
+  - response expect - 204
 
-updateProject
-request expect - req.body
-response expect - 204
+* updateProject
+  - request expect - req.body
+  - response expect - 204
