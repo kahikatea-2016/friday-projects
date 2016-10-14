@@ -2,8 +2,8 @@ import React from 'react'
 import List from './List'
 
 const projects = [
-  {id: 1, title: 'Project One'},
-  {id: 2, title: 'Project Two'}
+  {id: 1, title: 'Project One', description: 'This is project one'},
+  {id: 2, title: 'Project Two', description: 'This is project two'}
 ]
 
 export default React.createClass({
