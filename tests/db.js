@@ -1,7 +1,7 @@
 import test from 'tape'
 import knex from 'knex'
 
-import {getProjectsPromise} from '../server/db'
+import {getProjects} from '../server/db'
 
 const testConfig = {
   client: 'sqlite3',
@@ -14,7 +14,7 @@ test('getProjects', function (t) {
   // arrange
   createTestData().then(() => {
     // act
-    getProjectsPromise(testDb)
+    getProjects(testDb)
       .then(projects => {
         // assert
         t.equal(projects[0].id, 1)
