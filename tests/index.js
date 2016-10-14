@@ -14,7 +14,3 @@ test('that tests are working', function (t) {
   t.equal(actual, expected)
   t.end() // don't need this if you use plan()
 })
-
-test('express server is running', function (t) {
-  t.end()
-})
