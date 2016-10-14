@@ -14,4 +14,3 @@ test('test harness is working', function (t) {
   t.equal(actual, expected)
   t.end() // don't need this if you use plan()
 })
-
