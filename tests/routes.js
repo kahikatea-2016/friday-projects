@@ -1,29 +1,63 @@
-var test = require('tape')
-var routes = require('../server/routes')
+import test from 'tape'
+import {getProjects} from '../server/routes'
 
-// import code to be tested
+var fakeProjects = [
+  {
+    id: 1,
+    title: 'Project One'
+  },
+  {
+    id: 2,
+    title: 'Project Two'
+  }
+]
 
-test('that tests are working', function (t) {
+var errMsg = 'test error message'
+
+test('getProjects route success', function (t) {
   // arrange
-  t.plan(1) // don't need this if you use end()
-  var expected = 1
+  var db = getFakeDbModule(true)
+  var res = {
+    json (projects) {
+      // assert
+      t.deepEqual(projects, fakeProjects)
+      t.end()
+    }
+  }
 
   // act
-  var actual = 1
-
-  // assert
-  t.equal(actual, expected)
-  t.end() // don't need this if you use plan()
+  getProjects(db, null, res)
 })
 
-test('api routes', function (t) {
+test('getProjects route failure', function (t) {
   // arrange
-  var expected = []
+  var db = getFakeDbModule(false)
+  var res = {
+    send (message) {
+      // assert
+      t.equal(message, errMsg)
+      return this
+    },
+    status (code) {
+      t.equal(code, 500)
+      t.end()
+    }
+  }
 
-  // actual
-  var actual = routes.getProjects()
-
-  // assert
-  t.equal(actual, expected)
-  t.end()
+  // act
+  getProjects(db, null, res)
 })
+
+function getFakeDbModule (shouldPass) {
+  return {
+    getProjects () {
+      return new Promise((resolve, reject) => {
+        if (shouldPass) {
+          resolve(fakeProjects)
+        } else {
+          reject(new Error(errMsg))
+        }
+      })
+    }
+  }
+}
