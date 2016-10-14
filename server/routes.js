@@ -1,4 +1,4 @@
-var db = {}// require('./db')
+var db = require('./db')
 
 export default {
   getProjects: getProjects.bind(null, db),
