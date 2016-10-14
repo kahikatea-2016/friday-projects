@@ -9,18 +9,25 @@ module.exports = {
 
 function getProjects (req, res) {
   db.getProjects()
-  .then(function (projects) {
-    res.json(projects)
-  })
-  .catch(console.error)
+    .then(function (projects) {
+      res.json(projects)
+    })
+    .catch(function (err) {
+      res.send(err.message).status(500)
+    })
 }
 
 function getProject (req, res) {
-  db.getProject(req.body.id)
-  .then(function (project) {
-    res.json(project)
-  })
-  .catch(console.error)
+  var projectId = Number(req.params.id)
+  if (!isNaN(projectId)) {
+    db.getProject(projectId)
+      .then(function (project) {
+        res.json(project)
+      })
+      .catch(function (err) {
+        res.send(err.message).status(500)
+      })
+  }
 }
 
 function addProject (req, res) {
@@ -28,16 +35,20 @@ function addProject (req, res) {
     title: req.body.title,
     teamName: req.body.teamName,
     description: req.body.description,
-    date: req.body.repoURL,
+    date: req.body.date,
+    repoUrl: req.body.repoUrl,
+    appUrl: req.body.appUrl,
     teamMembers: req.body.teamMembers,
-    photoURL: req.body.photoURL,
+    photoUrl: req.body.photoUrl,
     photoCaption: req.body.photoCaption
   }
   db.addProject(project)
-  .then(function () {
-    res.send(204)
-  })
-  .catch(console.error)
+    .then(function () {
+      res.send(204)
+    })
+    .catch(function (err) {
+      res.send(err.message).status(500)
+    })
 }
 
 function updateProject (req, res) {
@@ -45,14 +56,18 @@ function updateProject (req, res) {
     title: req.body.title,
     teamName: req.body.teamName,
     description: req.body.description,
-    date: req.body.repoURL,
+    date: req.body.date,
+    repoUrl: req.body.repoUrl,
+    appUrl: req.body.appUrl,
     teamMembers: req.body.teamMembers,
-    photoURL: req.body.photoURL,
+    photoUrl: req.body.photoUrl,
     photoCaption: req.body.photoCaption
   }
   db.updateProject(project)
-  .then(function () {
-    res.send(204)
-  })
-  .catch(console.error)
+    .then(function () {
+      res.send(204)
+    })
+    .catch(function (err) {
+      res.send(err.message).status(500)
+    })
 }
