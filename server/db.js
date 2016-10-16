@@ -4,11 +4,12 @@ const config = require('../knexfile').development
 
 const db = knex(config)
 
-export default {
-  getProjects: getProjects.bind(null, db)
+module.exports = {
+  _getProjects: _getProjects,
+  getProjects: _getProjects.bind(null, db)
 }
 
-export function getProjects (db) {
+function _getProjects (db) {
   return new Promise((resolve, reject) => {
     db().select('title', 'id')
       .from('projects')

@@ -23,6 +23,7 @@
     "extends": "xo-react",
     "rules": {
       "react/jsx-space-before-closing": 0,
+      "react/no-unused-prop-types": 0,
       "unicorn/filename-case": 0,
       "import/no-unresolved": [
         0,
