@@ -1,6 +1,6 @@
 import test from 'tape'
 
-import {_getProjects, _getProject, _updateProject} from '../server/routes'
+import {_getProjects, _getProject, _addProject, _updateProject} from '../server/routes'
 
 var fakeProjects = [
   {
@@ -24,6 +24,21 @@ var fakeProject = {
   photoUrl: 'www.coolphoto.com',
   photoCaption: 'what a cool photo'
 }
+
+var addFakeProject = {
+  body: {
+    title: 'Project one',
+    teamName: 'Team Cool',
+    description: 'A great project',
+    date: '14/10/2016',
+    repoUrl: 'www.github.com/projectone',
+    appUrl: 'www.projectone.com',
+    teamMembers: 'Sam, Jaive',
+    photoUrl: 'www.coolphoto.com',
+    photoCaption: 'what a cool photo'
+  }
+}
+
 var updateFakeProject = {
   body: {
     id: 1,
@@ -141,19 +156,51 @@ function getFakeDbModuleProject () {
   }
 }
 
-test('updateProject route success', function (t) {
+test('addProject route success', function (t) {
   // arrange
-  var db = getFakeDbModuleUpdateProject(true)
+  var db = getFakeDbModuleAddProject(true)
   var res = {
     json (project) {
       // assert
-      t.deepEqual(project, updateFakeProject.body)
+      t.deepEqual(project, addFakeProject.body)
       t.end()
     }
   }
   // act
-  _updateProject(db, updateFakeProject, res)
+  _addProject(db, addFakeProject, res)
 })
+
+test('addProject route failure', function (t) {
+  // arrange
+  var db = getFakeDbModuleAddProject(false)
+  var res = {
+    send (message) {
+      // assert
+      t.equal(message, errMsg)
+      return this
+    },
+    status (code) {
+      t.equal(code, 500)
+      t.end()
+    }
+  }
+  // act
+  _addProject(db, addFakeProject, res)
+})
+
+function getFakeDbModuleAddProject (shouldPass) {
+  return {
+    addProject () {
+      return new Promise((resolve, reject) => {
+        if (shouldPass) {
+          resolve(addFakeProject)
+        } else {
+          reject(new Error(errMsg))
+        }
+      })
+    }
+  }
+}
 
 test('updateProject route failure', function (t) {
   // arrange
