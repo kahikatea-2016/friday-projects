@@ -10,16 +10,17 @@ export default React.createClass({
       app_url: React.PropTypes.string,
       date: React.PropTypes.string
     })),
-    photos:
-    {photo_id: React.PropTypes.number,
-     url: React.PropTypes.string,
-     caption: React.PropTypes.string,
-     project_id: React.PropTypes.number
+    photos: {
+      photo_id: React.PropTypes.number,
+      url: React.PropTypes.string,
+      caption: React.PropTypes.string,
+      project_id: React.PropTypes.number
     }
   },
+
   render () {
     return (
-      <div>
+      <div className="">
         <h2 key={this.props.projects.id}>{this.props.projects.title}</h2>
         <p>{this.props.projects.title}</p>
         <p>{this.props.projects.description}</p>
@@ -27,6 +28,7 @@ export default React.createClass({
         <p>{this.props.projects.app_url}</p>
         <p>{this.props.projects.repo_url}</p>
         <img src={this.props.photos.url}/>
+        <button>Edit a project</button>
       </div>
     )
   }

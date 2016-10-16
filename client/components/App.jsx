@@ -12,7 +12,8 @@ export default React.createClass({
       <div>
         <h1>Friday Projects</h1>
         <List projects={projects} />
-        <button>Add a project</button> | <button>Edit a project</button>
+        <Details />
+        <button>Add a project</button>
       </div>
     )
   }
