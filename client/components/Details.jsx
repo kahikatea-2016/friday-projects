@@ -1,4 +1,4 @@
-import React fom 'react'
+import React from 'react'
 
 export default React.createClass({
   propTypes: {
@@ -9,17 +9,24 @@ export default React.createClass({
       repo_url: React.PropTypes.string,
       app_url: React.PropTypes.string,
       date: React.PropTypes.string
-    }))
+    })),
+    photos:
+    {photo_id: React.PropTypes.number,
+     url: React.PropTypes.string,
+     caption: React.PropTypes.string,
+     project_id: React.PropTypes.number
+    }
   },
   render () {
     return (
       <div>
-        <h2 key={project.id}>{this.props.project.title}</h2>
-              <p >{project.title}</p>
-              <p>{project.description}</p>
-              <p>{project.date}</p>
-              <p>{project.app_url}</p>
-              <p>{project.repo_url}</p>
+        <h2 key={this.props.projects.id}>{this.props.projects.title}</h2>
+        <p>{this.props.projects.title}</p>
+        <p>{this.props.projects.description}</p>
+        <p>{this.props.projects.date}</p>
+        <p>{this.props.projects.app_url}</p>
+        <p>{this.props.projects.repo_url}</p>
+        <img src={this.props.photos.url}/>
       </div>
     )
   }
