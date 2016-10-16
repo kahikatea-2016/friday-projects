@@ -1,13 +1,27 @@
 body {
-  background-color: teal;
+  background-color: tomato;
   font-family: arial;
   text-align: center;
+  color: white;
 }
 
 ul, li {
-  list-style: none;
-  margin-bottom: 20px;
+  width: 300px;
+  margin: 0px auto 20px;
   font-size: 1em;
+  text-align: center;
+}
+
+a {
+  text-decoration: none;
+  color: white;
+  font-size: 2em;
+  transition-duration: .3s;
+}
+
+a:hover {
+  text-shadow: 1px 1px 10px black;
+  transition-duration: .3s;
 }
 
 table.photos {
@@ -18,4 +32,35 @@ table.photos {
 input, select {
   font-size: 1.4em;
   margin: 5px;
+}
+
+
+/*--------------------------*/
+
+h1 {
+  font-size: 4.5em;
+  font-family: Raleway;
+  text-shadow: 1px 1px 10px black;
+}
+
+h2 {
+  font-size: 2em;
+  font-family: Raleway;
+  font-style: italic;
+  text-shadow: 1px 1px 5px black;
+}
+
+
+.projects {
+  margin: 0 auto;
+  width: 960px;
+}
+
+.sexy_line{
+    display:block;
+    border:none;
+    color:white;
+    height:1px;
+    background:black;
+    background: -webkit-gradient(radial, 50% 50%, 0, 50% 50%, 500, from(#fff), to(tomato));
 }
