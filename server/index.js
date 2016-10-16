@@ -2,6 +2,7 @@ const path = require('path')
 const express = require('express')
 const bodyParser = require('body-parser')
 
+// import { Router, Route, Link } from 'react-router'
 // const routes = require('./routes')
 import {getProjects} from './routes'
 
