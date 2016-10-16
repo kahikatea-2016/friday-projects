@@ -142,7 +142,7 @@ function getFakeDbModuleProject () {
 
 test('addProject route success', function (t) {
   // arrange
-  var db = getFakeDbModuleAddProject()
+  var db = getFakeDbModuleAddProject(true)
   var res = {
     json (project) {
       // assert
@@ -154,11 +154,33 @@ test('addProject route success', function (t) {
   addProject(db, addFakeProject, res)
 })
 
-function getFakeDbModuleAddProject () {
+test('addProject route failure', function (t) {
+  // arrange
+  var db = getFakeDbModuleAddProject(false)
+  var res = {
+    send (message) {
+      // assert
+      t.equal(message, errMsg)
+      return this
+    },
+    status (code) {
+      t.equal(code, 500)
+      t.end()
+    }
+  }
+  // act
+  addProject(db, addFakeProject, res)
+})
+
+function getFakeDbModuleAddProject (shouldPass) {
   return {
     addProject () {
-      return new Promise(resolve => {
-        resolve(addFakeProject)
+      return new Promise((resolve, reject) => {
+        if (shouldPass) {
+          resolve(addFakeProject)
+        } else {
+          reject(new Error(errMsg))
+        }
       })
     }
   }
