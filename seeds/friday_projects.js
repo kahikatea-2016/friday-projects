@@ -9,8 +9,8 @@ exports.seed = function (knex, Promise) {
   ])
     .then(function () {
       return knex('projects').insert([
-        {id: 1, title: 'Project One', description: 'This is project one', repo_url: 'http://github.com/projectone', app_url: 'http://projectone.com', date: '02/08/2016'},
-        {id: 2, title: 'Project Two', description: 'This is project two', repo_url: 'http://github.com/projecttwo', app_url: 'http://projecttwo.com', date: '03/08/2016'}
+        {id: 1, title: 'Project One', description: 'This is project one', team_name: 'pacman', repo_url: 'http://github.com/projectone', app_url: 'http://projectone.com', date: '02/08/2016'},
+        {id: 2, title: 'Project Two', description: 'This is project two', team_name: 'zelda', repo_url: 'http://github.com/projecttwo', app_url: 'http://projecttwo.com', date: '03/08/2016'}
       ])
     })
 
