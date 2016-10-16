@@ -1,6 +1,6 @@
 import test from 'tape'
-import {getProjects, getProject} from '../server/routes'
 
+import {_getProjects, _getProject} from '../server/routes'
 
 var fakeProjects = [
   {
@@ -39,7 +39,7 @@ test('getProjects route success', function (t) {
   }
 
   // act
-  getProjects(db, null, res)
+  _getProjects(db, null, res)
 })
 
 test('getProjects route failure', function (t) {
@@ -58,7 +58,7 @@ test('getProjects route failure', function (t) {
   }
 
   // act
-  getProjects(db, null, res)
+  _getProjects(db, null, res)
 })
 
 function getFakeDbModule (shouldPass) {
@@ -92,7 +92,7 @@ test('getProject route success', function (t) {
   }
 
   // act
-  getProject(db, req, res)
+  _getProject(db, req, res)
 })
 
 test('getProject route failure', function (t) {
@@ -114,7 +114,7 @@ test('getProject route failure', function (t) {
   }
   t.end()
   // act
-  getProject(null, req, res)
+  _getProject(null, req, res)
 })
 
 function getFakeDbModuleProject () {
