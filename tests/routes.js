@@ -1,6 +1,6 @@
 import test from 'tape'
 
-import {_getProjects, _getProject} from '../server/routes'
+import {_getProjects, _getProject, _updateProject} from '../server/routes'
 
 var fakeProjects = [
   {
@@ -23,6 +23,20 @@ var fakeProject = {
   teamMembers: 'Sam, Jaive',
   photoUrl: 'www.coolphoto.com',
   photoCaption: 'what a cool photo'
+}
+var updateFakeProject = {
+  body: {
+    id: 1,
+    title: 'Project one',
+    teamName: 'Team Cool',
+    description: 'A great project',
+    date: '14/10/2016',
+    repoUrl: 'www.github.com/projectone',
+    appUrl: 'www.projectone.com',
+    teamMembers: 'Sam, Jaive',
+    photoUrl: 'www.coolphoto.com',
+    photoCaption: 'what a cool photo'
+  }
 }
 
 var errMsg = 'test error message'
@@ -122,6 +136,34 @@ function getFakeDbModuleProject () {
     getProject () {
       return new Promise(resolve => {
         resolve(fakeProject)
+      })
+    }
+  }
+}
+
+test('addProject route success', function (t) {
+  // arrange
+  var db = getFakeDbModuleUpdateProject(true)
+  var res = {
+    json (project) {
+      // assert
+      t.deepEqual(project, updateFakeProject.body)
+      t.end()
+    }
+  }
+  // act
+  _updateProject(db, updateFakeProject, res)
+})
+
+function getFakeDbModuleUpdateProject (shouldPass) {
+  return {
+    updateProject () {
+      return new Promise((resolve, reject) => {
+        if (shouldPass) {
+          resolve(updateFakeProject)
+        } else {
+          reject(new Error(errMsg))
+        }
       })
     }
   }
