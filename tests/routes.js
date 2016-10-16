@@ -141,13 +141,31 @@ function getFakeDbModuleProject () {
   }
 }
 
-test('addProject route success', function (t) {
+test('updateProject route success', function (t) {
   // arrange
   var db = getFakeDbModuleUpdateProject(true)
   var res = {
     json (project) {
       // assert
       t.deepEqual(project, updateFakeProject.body)
+      t.end()
+    }
+  }
+  // act
+  _updateProject(db, updateFakeProject, res)
+})
+
+test('updateProject route failure', function (t) {
+  // arrange
+  var db = getFakeDbModuleUpdateProject(false)
+  var res = {
+    send (message) {
+      // assert
+      t.equal(message, errMsg)
+      return this
+    },
+    status (code) {
+      t.equal(code, 500)
       t.end()
     }
   }
