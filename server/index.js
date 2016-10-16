@@ -2,7 +2,8 @@ const path = require('path')
 const express = require('express')
 const bodyParser = require('body-parser')
 
-const routes = require('./routes')
+// const routes = require('./routes')
+import {getProjects} from './routes'
 
 const app = express()
 
@@ -15,9 +16,9 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '../public', 'list.html'))
 })
 
-app.get('/v1/projects', routes.getProjects)
-app.get('/v1/projects/:id', routes.getProject)
-app.post('v1/projects', routes.addProject)
-app.put('v1/projects', routes.updateProject)
+app.get('/projects', getProjects)
+// app.get('/v1/projects/:id', routes.getProject)
+// app.post('v1/projects', routes.addProject)
+// app.put('v1/projects', routes.updateProject)
 
 app.listen(PORT, () => console.log('Listening to port', PORT))
