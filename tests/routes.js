@@ -1,5 +1,6 @@
 import test from 'tape'
-import {getProjects} from '../server/routes'
+import {getProjects, getProject} from '../server/routes'
+
 
 var fakeProjects = [
   {
@@ -11,6 +12,18 @@ var fakeProjects = [
     title: 'Project Two'
   }
 ]
+
+var fakeProject = {
+  title: 'Project one',
+  teamName: 'Team Cool',
+  description: 'A great project',
+  date: '14/10/2016',
+  repoUrl: 'www.github.com/projectone',
+  appUrl: 'www.projectone.com',
+  teamMembers: 'Sam, Jaive',
+  photoUrl: 'www.coolphoto.com',
+  photoCaption: 'what a cool photo'
+}
 
 var errMsg = 'test error message'
 
@@ -57,6 +70,58 @@ function getFakeDbModule (shouldPass) {
         } else {
           reject(new Error(errMsg))
         }
+      })
+    }
+  }
+}
+
+test('getProject route success', function (t) {
+  // arrange
+  var db = getFakeDbModuleProject()
+  var res = {
+    json (project) {
+      // assert
+      t.deepEqual(project, fakeProject)
+      t.end()
+    }
+  }
+  var req = {
+    params: {
+      id: 1
+    }
+  }
+
+  // act
+  getProject(db, req, res)
+})
+
+test('getProject route failure', function (t) {
+  // arrange
+  var req = {
+    params: {
+      id: 'f'
+    }
+  }
+  var res = {
+    send (message) {
+      // assert
+      t.equal(message, 'invalid id', 'detects invalid id')
+      return this
+    },
+    status (code) {
+      t.equal(code, 404, 'returns 404')
+    }
+  }
+  t.end()
+  // act
+  getProject(null, req, res)
+})
+
+function getFakeDbModuleProject () {
+  return {
+    getProject () {
+      return new Promise(resolve => {
+        resolve(fakeProject)
       })
     }
   }

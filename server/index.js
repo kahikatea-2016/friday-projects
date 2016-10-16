@@ -2,9 +2,7 @@ const path = require('path')
 const express = require('express')
 const bodyParser = require('body-parser')
 
-// import { Router, Route, Link } from 'react-router'
-// const routes = require('./routes')
-import {getProjects} from './routes'
+const routes = require('./routes')
 
 const app = express()
 
@@ -18,8 +16,9 @@ app.get('/', (req, res) => {
 })
 
 app.get('/projects', getProjects)
-// app.get('/v1/projects/:id', routes.getProject)
-// app.post('v1/projects', routes.addProject)
-// app.put('v1/projects', routes.updateProject)
+app.get('/v1/projects', routes.getProjects)
+app.get('/v1/projects/:id', routes.getProject)
+app.post('v1/projects', routes.addProject)
+app.put('v1/projects', routes.updateProject)
 
 app.listen(PORT, () => console.log('Listening to port', PORT))
