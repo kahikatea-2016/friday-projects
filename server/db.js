@@ -1,6 +1,6 @@
 const knex = require('knex')
 
-const config = require('../knexfile').development
+const config = require('../knexfile')[process.env.NODE_ENV || 'development']
 
 const db = knex(config)
 
@@ -26,23 +26,56 @@ function _getProject (db, id) {
       .join('photos', 'projects.id', '=', 'photos.project_id')
       .join('project_teams', 'projects.id', '=', 'project_teams.project_id')
       .join('team_members', 'project_teams.team_member_id', '=', 'team_members.id')
-      .select('projects.id', 'projects.title', 'projects.description', 'projects.team_name as teamName', 'projects.repo_url as repoUrl', 'projects.app_url as appUrl', 'projects.date', 'photos.url as photoUrl', 'photos.caption', 'team_members.id as teamMemberId', 'team_members.name')
+      .select('projects.id as id', 'projects.title', 'projects.description', 'projects.team_name as teamName', 'projects.repo_url as repoUrl', 'projects.app_url as appUrl', 'projects.date', 'photos.url as photoUrl', 'photos.caption', 'team_members.id as memberId', 'team_members.name as memberName')
       .where('projects.id', '=', id)
       .then(project => {
-        console.log(project)
-        const returnProject = createProject(project)
-        resolve({
-          // id: project.id,
-          // title: project.title,
-          // description: project.description,
-          // repoUrl: project.repoUrl,
-          // appUrl: project.appUrl,
-          // date: project.date,
-          // photoUrl: project.photoUrl,
-          // photoCaption: project.caption,
-          // teamName: project.teamName
-        })
+        const properProject = transformProject(project)
+        resolve(properProject)
       })
       .catch(reject)
   })
+}
+
+function transformProject (project) {
+  return {
+    id: project[0].id,
+    title: project[0].title,
+    description: project[0].description,
+    teamName: project[0].teamName,
+    repoUrl: project[0].repoUrl,
+    appUrl: project[0].appUrl,
+    date: project[0].date,
+    photos: getPhotos(project),
+    teamMembers: getTeamMembers(project)
+  }
+}
+
+function getPhotos (projects) {
+  var photos = []
+  var foundCaptions = []
+  for (var i = 0; i < projects.length; i++) {
+    if (!foundCaptions.includes(projects[i].caption)) {
+      photos.push({
+        caption: projects[i].caption,
+        photoUrl: projects[i].photoUrl
+      })
+      foundCaptions.push(projects[i].caption)
+    }
+  }
+  return photos
+}
+
+function getTeamMembers (projects) {
+  var member = []
+  var foundId = []
+  for (var i = 0; i < projects.length; i++) {
+    if (!foundId.includes(projects[i].memberId)) {
+      member.push({
+        memberId: projects[i].memberId,
+        memberName: projects[i].memberName
+      })
+      foundId.push(projects[i].memberId)
+    }
+  }
+  return member
 }
