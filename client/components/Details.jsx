@@ -25,13 +25,11 @@ export default React.createClass({
   render () {
     return (
       <div>
-        <h2 key={this.props.id}>{this.props.title}</h2>
-        <p>{this.props.description}</p>
-        <p>{this.props.date}</p>
-        <p>{this.props.appUrl}</p>
-        <p>{this.props.repoUrl}</p>
-        <img src={this.props.url}/>
-        <p>{this.props.caption}</p>
+        <h2>{this.props.project.title}</h2>
+        <p>{this.props.project.description}</p>
+        <p>{this.props.project.date}</p>
+        <p>{this.props.project.appUrl}</p>
+        <p>{this.props.project.repoUrl}</p>
         <button>Edit a project</button>
       </div>
     )

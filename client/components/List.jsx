@@ -7,7 +7,6 @@ export default React.createClass({
       title: React.PropTypes.string
     }))
   },
-  
   render () {
     return (
       <div>
