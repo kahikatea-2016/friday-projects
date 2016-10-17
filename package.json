@@ -7,7 +7,8 @@
     "start": "node 'server/index.js'",
     "knex": "knex",
     "test": "xo && babel-tape-runner 'tests/**/*.js' | tap-spec",
-    "build": "webpack"
+    "build": "webpack",
+    "heroku-postbuild": "npm run build; npm run knex migrate:latest; npm run knex seed:run"
   },
   "repository": {
     "type": "git",
@@ -59,7 +60,6 @@
     "react-dom": "^15.3.2",
     "tap-spec": "^4.1.1",
     "tape": "^4.5.1",
-    "webpack": "^1.13.2",
     "webpack-dev-server": "^1.16.2",
     "xo": "^0.17.0"
   },
@@ -68,11 +68,15 @@
   },
   "homepage": "https://github.com/kahikatea-2016/friday-projects#readme",
   "dependencies": {
+    "babel-loader": "^6.2.5",
     "body-parser": "^1.15.2",
     "dotenv": "^2.0.0",
     "express": "^4.14.0",
     "knex": "^0.12.5",
     "react-router": "^2.8.1",
-    "sqlite3": "^3.1.6"
+    "sqlite3": "^3.1.6",
+    "pg": "^6.1.0",
+    "sqlite3": "^3.1.6",
+    "webpack": "^1.13.2"
   }
 }
