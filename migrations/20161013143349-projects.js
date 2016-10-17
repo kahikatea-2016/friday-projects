@@ -8,6 +8,7 @@ exports.up = function (knex, Promise) {
       table.increments('id').primary()
       table.string('title')
       table.string('description')
+      table.string('team_name')
       table.string('repo_url')
       table.string('app_url')
       table.date('date')
@@ -24,8 +25,8 @@ exports.up = function (knex, Promise) {
     }),
     knex.schema.createTable('project_teams', function (table) {
       table.increments('id').primary()
-      table.integer('team_member_id').references('team_members.id')
       table.integer('project_id').references('projects.id')
+      table.integer('team_member_id').references('team_members.id')
     })
   ])
 }
