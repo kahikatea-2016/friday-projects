@@ -23,6 +23,7 @@
     "extends": "xo-react",
     "rules": {
       "react/jsx-space-before-closing": 0,
+      "react/no-unused-prop-types": 0,
       "unicorn/filename-case": 0,
       "import/no-unresolved": [
         0,
@@ -55,6 +56,7 @@
     "react-dom": "^15.3.2",
     "tap-spec": "^4.1.1",
     "tape": "^4.5.1",
+    "tape-async": "^2.1.1",
     "webpack": "^1.13.2",
     "webpack-dev-server": "^1.16.2",
     "xo": "^0.17.0"

@@ -17,7 +17,9 @@ exports.seed = function (knex, Promise) {
     .then(function () {
       return knex('photos').insert([
         {id: 1, url: 'http://cache.gawkerassets.com/assets/images/17/2010/05/500x_afternoon-projects.jpg', caption: 'what a cool photo', project_id: 1},
-        {id: 2, url: 'http://www.supercoolrobots.com/wp-content/uploads/sites/76/2014/12/BB-8-pic-2x1-760x350.jpg', caption: 'star wars is cool', project_id: 2}
+        {id: 2, url: 'http://www.supercoolrobots.com/wp-content/uploads/sites/76/2014/12/BB-8-pic-2x1-760x350.jpg', caption: 'star wars is cool', project_id: 2},
+        {id: 3, url: 'http://cache.gawkerassets.com/assets/images/17/2010/05/500x_afternoon-projects.jpg', caption: 'what a cool photo', project_id: 2},
+        {id: 4, url: 'http://www.supercoolrobots.com/wp-content/uploads/sites/76/2014/12/BB-8-pic-2x1-760x350.jpg', caption: 'star wars is cool', project_id: 1}
       ])
     })
 

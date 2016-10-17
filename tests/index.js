@@ -4,7 +4,6 @@ const test = require('tape')
 
 test('test harness is working', function (t) {
   // arrange
-  // t.plan(1) // don't need this if you use end()
   var expected = 1
 
   // act
