@@ -1,5 +1,9 @@
 exports.up = function (knex, Promise) {
   return Promise.all([
+    knex.schema.dropTableIfExists('photos'),
+    knex.schema.dropTableIfExists('team_members'),
+    knex.schema.dropTableIfExists('project_teams'),
+    knex.schema.dropTableIfExists('projects'),
     knex.schema.createTable('projects', function (table) {
       table.increments('id').primary()
       table.string('title')
