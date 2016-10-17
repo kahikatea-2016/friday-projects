@@ -6,7 +6,9 @@ module.exports = {
   _getProject: _getProject,
   getProject: _getProject.bind(null, db),
   _addProject: _addProject,
-  addProject: _addProject.bind(null, db)
+  addProject: _addProject.bind(null, db),
+  _updateProject: _updateProject,
+  updateProject: _updateProject.bind(null, db)
 }
 
 function _getProjects (db, req, res) {
@@ -47,6 +49,28 @@ function _addProject (db, req, res) {
     photoCaption: req.body.photoCaption
   }
   db.addProject(project)
+    .then(function () {
+      res.json(project)
+    })
+    .catch(function (err) {
+      res.send(err.message).status(500)
+    })
+}
+
+function _updateProject (db, req, res) {
+  var project = {
+    id: req.body.id,
+    title: req.body.title,
+    teamName: req.body.teamName,
+    description: req.body.description,
+    date: req.body.date,
+    repoUrl: req.body.repoUrl,
+    appUrl: req.body.appUrl,
+    teamMembers: req.body.teamMembers,
+    photoUrl: req.body.photoUrl,
+    photoCaption: req.body.photoCaption
+  }
+  db.updateProject(project)
     .then(function () {
       res.json(project)
     })
