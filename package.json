@@ -8,7 +8,7 @@
     "knex": "knex",
     "test": "xo && babel-tape-runner 'tests/**/*.js' | tap-spec",
     "build": "webpack",
-    "heroku-postbuild": "npm run knex migrate:latest; npm run knex seed:run"
+    "heroku-postbuild": "npm run build; npm run knex migrate:latest; npm run knex seed:run"
   },
   "repository": {
     "type": "git",
@@ -17,7 +17,8 @@
   "babel": {
     "presets": [
       "es2015",
-      "react"
+      "react",
+      "stage-0"
     ]
   },
   "xo": {
@@ -46,15 +47,10 @@
   "author": "kahikatea-2016 <don@devacademy.co.nz>",
   "license": "ISC",
   "devDependencies": {
-    "babel-core": "^6.17.0",
-    "babel-loader": "^6.2.5",
-    "babel-preset-es2015": "^6.16.0",
-    "babel-preset-react": "^6.16.0",
+    "babel-cli": "^6.x.x",
     "babel-tape-runner": "^2.0.1",
     "eslint-config-xo-react": "^0.10.0",
     "eslint-plugin-react": "^6.4.1",
-    "react": "^15.3.2",
-    "react-dom": "^15.3.2",
     "tap-spec": "^4.1.1",
     "tape": "^4.5.1",
     "tape-async": "^2.1.1",
@@ -67,11 +63,21 @@
   },
   "homepage": "https://github.com/kahikatea-2016/friday-projects#readme",
   "dependencies": {
+    "babel-core": "^6.17.0",
+    "babel-loader": "^6.2.5",
+    "babel-preset-es2015": "^6.16.0",
+    "babel-preset-react": "^6.16.0",
+    "babel-preset-stage-0": "^6.3.13",
     "body-parser": "^1.15.2",
     "dotenv": "^2.0.0",
     "express": "^4.14.0",
     "knex": "^0.12.5",
     "pg": "^6.1.0",
-    "sqlite3": "^3.1.6"
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-router": "^2.8.1",
+    "sqlite3": "^3.1.6",
+    "superagent": "^2.3.0",
+    "webpack": "^1.13.2"
   }
 }
